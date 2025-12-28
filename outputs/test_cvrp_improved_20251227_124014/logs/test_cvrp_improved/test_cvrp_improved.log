@@ -1,0 +1,12 @@
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/test_cvrp_improved_20251227_124014/logs/test_cvrp_improved
+2025-12-27 12:40:14 - test_cvrp_improved - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - Problems to run: ['cvrp_nls']
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - 🔄 Starting cvrp_nls (size=50)
+2025-12-27 12:40:14 - test_cvrp_improved - [31mERROR[0m - Problem cvrp_nls failed: Shared library file `libhgscvrp` not found in HGS-CVRP-main/build/ (tried extensions: .so, .dylib, .dll). Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP.
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - ✅ Completed cvrp_nls in 0.00s - Best cost: N/A
+2025-12-27 12:40:14 - test_cvrp_improved - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-27 12:40:15 - test_cvrp_improved - [32mINFO[0m - ✅ Experiment report generated
+2025-12-27 12:40:15 - test_cvrp_improved - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-27 12:40:15 - test_cvrp_improved - [32mINFO[0m - ✅ Experiment completed in 0.39s
+2025-12-27 12:40:15 - test_cvrp_improved - [32mINFO[0m - 📁 Results saved to: outputs/test_cvrp_improved_20251227_124014

@@ -5,9 +5,16 @@ import numpy as np
 import pandas as pd
 import torch
 
-from net import Net
-from aco import ACO
-from utils import gen_pyg_data, load_test_dataset
+# Optional neural network imports
+try:
+    from net import Net
+    HAS_NEURAL_NETWORKS = True
+except ImportError:
+    Net = None
+    HAS_NEURAL_NETWORKS = False
+
+from .aco import ACO
+from .utils import gen_pyg_data, load_test_dataset
 
 from tqdm import tqdm
 

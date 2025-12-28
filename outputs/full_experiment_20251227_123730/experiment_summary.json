@@ -1,0 +1,111 @@
+{
+  "experiment_name": "full_experiment",
+  "start_time": 1766867850.814795,
+  "end_time": 1766867853.834649,
+  "duration": 3.0198540687561035,
+  "problems_run": 8,
+  "problems_succeeded": 7,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766867850.8165472,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.243058,
+      "duration": 2.426510810852051
+    },
+    "cvrp_nls": {
+      "status": "failed",
+      "problem": "cvrp_nls",
+      "size": 50,
+      "start_time": 1766867853.243121,
+      "error": "Shared library file `libhgscvrp` not found in HGS-CVRP-main/build/ (tried extensions: .so, .dylib, .dll). Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP.",
+      "end_time": 1766867853.245044,
+      "duration": 0.0019230842590332031
+    },
+    "cvrptw_nls": {
+      "status": "completed",
+      "problem": "cvrptw_nls",
+      "size": 50,
+      "start_time": 1766867853.245095,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.2662241,
+      "duration": 0.021129131317138672
+    },
+    "bpp": {
+      "status": "completed",
+      "problem": "bpp",
+      "size": 120,
+      "start_time": 1766867853.266285,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.2684312,
+      "duration": 0.0021462440490722656
+    },
+    "op": {
+      "status": "completed",
+      "problem": "op",
+      "size": 50,
+      "start_time": 1766867853.268497,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.270476,
+      "duration": 0.0019791126251220703
+    },
+    "pctsp": {
+      "status": "completed",
+      "problem": "pctsp",
+      "size": 50,
+      "start_time": 1766867853.270533,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.2724092,
+      "duration": 0.0018761157989501953
+    },
+    "smtwtp": {
+      "status": "completed",
+      "problem": "smtwtp",
+      "size": 50,
+      "start_time": 1766867853.2724538,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.2739682,
+      "duration": 0.001514434814453125
+    },
+    "sop": {
+      "status": "completed",
+      "problem": "sop",
+      "size": 50,
+      "start_time": 1766867853.274009,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867853.275296,
+      "duration": 0.0012869834899902344
+    }
+  },
+  "output_directory": "/Users/4d/Documents/GitHub/gfacs/outputs/full_experiment_20251227_123730"
+}

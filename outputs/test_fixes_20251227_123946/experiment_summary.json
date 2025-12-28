@@ -1,0 +1,24 @@
+{
+  "experiment_name": "test_fixes",
+  "start_time": 1766867986.161151,
+  "end_time": 1766867988.575042,
+  "duration": 2.413891077041626,
+  "problems_run": 1,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766867986.163145,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867988.007531,
+      "duration": 1.8443858623504639
+    }
+  },
+  "output_directory": "outputs/test_fixes_20251227_123946"
+}

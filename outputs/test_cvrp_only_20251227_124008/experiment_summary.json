@@ -1,0 +1,20 @@
+{
+  "experiment_name": "test_cvrp_only",
+  "start_time": 1766868008.038217,
+  "end_time": 1766868008.423485,
+  "duration": 0.385267972946167,
+  "problems_run": 1,
+  "problems_succeeded": 0,
+  "problem_results": {
+    "cvrp_nls": {
+      "status": "failed",
+      "problem": "cvrp_nls",
+      "size": 50,
+      "start_time": 1766868008.040294,
+      "error": "Shared library file `libhgscvrp` not found in HGS-CVRP-main/build/ (tried extensions: .so, .dylib, .dll). Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP.",
+      "end_time": 1766868008.0429802,
+      "duration": 0.0026862621307373047
+    }
+  },
+  "output_directory": "outputs/test_cvrp_only_20251227_124008"
+}

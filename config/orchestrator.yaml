@@ -1,0 +1,93 @@
+# GFACS Orchestrator Configuration
+# Comprehensive experiment setup for running all GFACS problems
+
+experiment_name: "gfacs_comprehensive_experiment"
+description: "Full GFACS experiment running all 8 combinatorial optimization problems"
+
+# Problem configurations
+problems:
+  - name: "tsp_nls"
+    size: 200
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+  - name: "cvrp_nls"
+    size: 200
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+  - name: "cvrptw_nls"
+    size: 50
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+  - name: "bpp"
+    size: 120
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 10
+
+  - name: "op"
+    size: 50
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+  - name: "pctsp"
+    size: 50
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+  - name: "smtwtp"
+    size: 50
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 10
+
+  - name: "sop"
+    size: 50
+    enabled: true
+    n_ants: 20
+    n_iterations: 50
+    device: "cpu"
+    extra_args:
+      k_sparse: 20
+
+# Output configuration
+base_output_dir: "outputs"
+enable_visualizations: true
+enable_animations: true
+
+# Logging configuration
+log_level: "INFO"
+
+# Resource configuration
+max_parallel_problems: 1  # Sequential execution for stability
+
+# Reproducibility
+seed: 42

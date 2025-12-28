@@ -1,0 +1,1 @@
+2025-12-26 15:48:14 - quick_test - [31mERROR[0m - _run_problem:303 - Problem tsp_nls failed: unterminated triple-quoted string literal (detected at line 718) (aco.py, line 436)

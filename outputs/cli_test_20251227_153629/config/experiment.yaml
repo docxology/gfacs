@@ -1,0 +1,64 @@
+experiment_name: cli_test
+problems:
+- name: tsp_nls
+  size: 50
+  enabled: true
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: cvrp_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: cvrptw_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: bpp
+  size: 120
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: op
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: pctsp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: smtwtp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- name: sop
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+base_output_dir: /private/var/folders/vc/rgmbpjpj0dbg61vr54xjskc80000gn/T/pytest-of-4d/pytest-74/test_run_orchestrator_function0
+enable_visualizations: true
+enable_animations: true
+log_level: INFO
+max_parallel_problems: 1
+seed: 42

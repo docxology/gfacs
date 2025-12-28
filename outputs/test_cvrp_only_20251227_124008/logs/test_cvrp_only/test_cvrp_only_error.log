@@ -1,0 +1,1 @@
+2025-12-27 12:40:08 - test_cvrp_only - [31mERROR[0m - _run_problem:310 - Problem cvrp_nls failed: Shared library file `libhgscvrp` not found in HGS-CVRP-main/build/ (tried extensions: .so, .dylib, .dll). Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP.

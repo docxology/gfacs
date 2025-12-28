@@ -3,6 +3,17 @@ from torch import nn
 from torch.nn import functional as F
 import torch_geometric.nn as gnn
 
+# Optional profiling import
+try:
+    from gfacs.utils import profile_nn, profile_gpu_memory
+    HAS_PROFILING = True
+except ImportError:
+    HAS_PROFILING = False
+    def profile_nn(func):
+        return func
+    def profile_gpu_memory(func):
+        return func
+
 
 # GNN for edge embeddings
 class EmbNet(nn.Module):
@@ -95,6 +106,8 @@ class Net(nn.Module):
             nn.Linear(32, Z_out_dim),
         ) if gfn else None
 
+    @profile_nn
+    @profile_gpu_memory
     def forward(self, pyg, return_logZ=False):
         x, edge_index, edge_attr = pyg.x, pyg.edge_index, pyg.edge_attr
         emb = self.emb_net(x, edge_index, edge_attr)

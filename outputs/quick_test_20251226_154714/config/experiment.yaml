@@ -1,0 +1,72 @@
+experiment_name: quick_test
+problems:
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: tsp_nls
+  size: 50
+  enabled: true
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: cvrp_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: cvrptw_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: bpp
+  size: 120
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: op
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: pctsp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: smtwtp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: sop
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+base_output_dir: outputs
+enable_visualizations: true
+enable_animations: true
+log_level: INFO
+max_parallel_problems: 1
+seed: 42

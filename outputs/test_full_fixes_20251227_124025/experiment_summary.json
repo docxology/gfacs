@@ -1,0 +1,42 @@
+{
+  "experiment_name": "test_full_fixes",
+  "start_time": 1766868025.3139808,
+  "end_time": 1766868027.368615,
+  "duration": 2.0546340942382812,
+  "problems_run": 3,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766868025.3159099,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766868026.853348,
+      "duration": 1.537438154220581
+    },
+    "cvrp_nls": {
+      "status": "failed",
+      "problem": "cvrp_nls",
+      "size": 50,
+      "start_time": 1766868026.8534,
+      "error": "Shared library file `libhgscvrp` not found in HGS-CVRP-main/build/ (tried extensions: .so, .dylib, .dll). Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP.",
+      "end_time": 1766868026.853902,
+      "duration": 0.0005021095275878906
+    },
+    "bpp": {
+      "status": "failed",
+      "problem": "bpp",
+      "size": 120,
+      "start_time": 1766868026.853933,
+      "error": "No module named 'torch_geometric'",
+      "end_time": 1766868026.856885,
+      "duration": 0.0029518604278564453
+    }
+  },
+  "output_directory": "outputs/test_full_fixes_20251227_124025"
+}

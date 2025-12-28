@@ -1,0 +1,12 @@
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/test_install_20251226_155629/logs/test_install
+2025-12-26 15:56:29 - test_install - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - Problems to run: ['tsp_nls']
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - 🔄 Starting tsp_nls (size=50)
+2025-12-26 15:56:29 - test_install - [31mERROR[0m - Problem tsp_nls failed: unterminated triple-quoted string literal (detected at line 718) (aco.py, line 436)
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - ✅ Completed tsp_nls in 0.00s - Best cost: N/A
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-26 15:56:29 - test_install - [33mWARNING[0m - Failed to generate experiment report: name 'plt' is not defined
+2025-12-26 15:56:29 - test_install - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - ✅ Experiment completed in 0.24s
+2025-12-26 15:56:29 - test_install - [32mINFO[0m - 📁 Results saved to: outputs/test_install_20251226_155629

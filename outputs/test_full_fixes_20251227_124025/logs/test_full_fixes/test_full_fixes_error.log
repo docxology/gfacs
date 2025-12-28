@@ -1,0 +1,1 @@
+2025-12-27 12:40:26 - test_full_fixes - [31mERROR[0m - _run_problem:315 - Problem bpp failed: No module named 'torch_geometric'

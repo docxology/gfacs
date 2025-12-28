@@ -1,0 +1,8 @@
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/gfacs_experiment_20251227_153712/logs/gfacs_experiment
+2025-12-27 15:37:12 - gfacs_experiment - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - Problems to run: []
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - No problem results to visualize
+2025-12-27 15:37:12 - gfacs_experiment - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - ✅ Experiment completed in 0.00s
+2025-12-27 15:37:12 - gfacs_experiment - [32mINFO[0m - 📁 Results saved to: outputs/gfacs_experiment_20251227_153712

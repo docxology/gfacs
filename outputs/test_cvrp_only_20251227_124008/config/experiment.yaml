@@ -1,0 +1,72 @@
+experiment_name: test_cvrp_only
+problems:
+- !!python/object:__main__.ProblemConfig
+  name: tsp_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: cvrp_nls
+  size: 50
+  enabled: true
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: cvrptw_nls
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: bpp
+  size: 120
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: op
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: pctsp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: smtwtp
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+- !!python/object:__main__.ProblemConfig
+  name: sop
+  size: 50
+  enabled: false
+  n_ants: 20
+  n_iterations: 50
+  device: cpu
+  extra_args: {}
+base_output_dir: outputs
+enable_visualizations: true
+enable_animations: true
+log_level: INFO
+max_parallel_problems: 1
+seed: 42

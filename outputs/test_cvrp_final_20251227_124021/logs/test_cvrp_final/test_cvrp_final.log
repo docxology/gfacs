@@ -1,0 +1,12 @@
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/test_cvrp_final_20251227_124021/logs/test_cvrp_final
+2025-12-27 12:40:21 - test_cvrp_final - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - Problems to run: ['cvrp_nls']
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - 🔄 Starting cvrp_nls (size=50)
+2025-12-27 12:40:21 - test_cvrp_final - [33mWARNING[0m - HGS-CVRP library not found for cvrp_nls. Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP solver.
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - ✅ Completed cvrp_nls in 0.00s - Best cost: N/A
+2025-12-27 12:40:21 - test_cvrp_final - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-27 12:40:22 - test_cvrp_final - [32mINFO[0m - ✅ Experiment report generated
+2025-12-27 12:40:22 - test_cvrp_final - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-27 12:40:22 - test_cvrp_final - [32mINFO[0m - ✅ Experiment completed in 0.33s
+2025-12-27 12:40:22 - test_cvrp_final - [32mINFO[0m - 📁 Results saved to: outputs/test_cvrp_final_20251227_124021

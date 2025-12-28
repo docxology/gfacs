@@ -1,0 +1,20 @@
+2025-12-27 12:40:25 - test_full_fixes - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/test_full_fixes_20251227_124025/logs/test_full_fixes
+2025-12-27 12:40:25 - test_full_fixes - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-27 12:40:25 - test_full_fixes - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 12:40:25 - test_full_fixes - [32mINFO[0m - Problems to run: ['tsp_nls', 'cvrp_nls', 'bpp']
+2025-12-27 12:40:25 - test_full_fixes - [32mINFO[0m - 🔄 Starting tsp_nls (size=50)
+2025-12-27 12:40:26 - test_full_fixes - [33mWARNING[0m - Could not load test dataset for tsp_nls: File ../data/tsp/testDataset-50.pt not found, please download the test dataset from the original repository.
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - ✅ Completed tsp_nls in 1.54s - Best cost: None
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - 🔄 Starting cvrp_nls (size=50)
+2025-12-27 12:40:26 - test_full_fixes - [33mWARNING[0m - HGS-CVRP library not found for cvrp_nls. Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP solver.
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - ✅ Completed cvrp_nls in 0.00s - Best cost: N/A
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - 🔄 Starting bpp (size=120)
+2025-12-27 12:40:26 - test_full_fixes - [31mERROR[0m - Problem bpp failed: No module named 'torch_geometric'
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - ✅ Completed bpp in 0.00s - Best cost: N/A
+2025-12-27 12:40:26 - test_full_fixes - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-27 12:40:27 - test_full_fixes - [32mINFO[0m - ✅ Runtime comparison plot generated
+2025-12-27 12:40:27 - test_full_fixes - [32mINFO[0m - ✅ Experiment report generated
+2025-12-27 12:40:27 - test_full_fixes - [32mINFO[0m - ✅ Summary statistics generated
+2025-12-27 12:40:27 - test_full_fixes - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-27 12:40:27 - test_full_fixes - [32mINFO[0m - ✅ Experiment completed in 2.05s
+2025-12-27 12:40:27 - test_full_fixes - [32mINFO[0m - 📁 Results saved to: outputs/test_full_fixes_20251227_124025

@@ -1,0 +1,24 @@
+{
+  "experiment_name": "test_cvrp_fix",
+  "start_time": 1766867992.5585139,
+  "end_time": 1766867994.590595,
+  "duration": 2.032081127166748,
+  "problems_run": 1,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766867992.5604658,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766867994.095638,
+      "duration": 1.5351722240447998
+    }
+  },
+  "output_directory": "outputs/test_cvrp_fix_20251227_123952"
+}

@@ -1,0 +1,8 @@
+Problem,Best Cost,Mean Cost,Std Cost,Duration,Iterations
+tsp_nls,N/A,N/A,N/A,2.43s,0
+cvrptw_nls,N/A,N/A,N/A,0.02s,0
+bpp,N/A,N/A,N/A,0.00s,0
+op,N/A,N/A,N/A,0.00s,0
+pctsp,N/A,N/A,N/A,0.00s,0
+smtwtp,N/A,N/A,N/A,0.00s,0
+sop,N/A,N/A,N/A,0.00s,0

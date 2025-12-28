@@ -9,32 +9,109 @@ import numba as nb
 import torch
 from torch.distributions import Categorical
 
-from two_opt import batched_two_opt_python
+try:
+    from .two_opt import batched_two_opt_python
+except ImportError:
+    from two_opt import batched_two_opt_python
+
+# Optional profiling import
+try:
+    from gfacs.utils import profile_aco
+    HAS_PROFILING = True
+except ImportError:
+    HAS_PROFILING = False
+    def profile_aco(func):
+        return func
+
+# Optional validation import
+try:
+    from gfacs.utils import validate_distance_matrix, validate_positive_int, ValidationError
+    HAS_VALIDATION = True
+except ImportError:
+    HAS_VALIDATION = False
+    ValidationError = Exception
+
+# Check for PyTorch compile availability (PyTorch 2.0+)
+try:
+    if hasattr(torch, 'compile'):
+        torch_compile_available = True
+    else:
+        torch_compile_available = False
+except:
+    torch_compile_available = False
 
 
-class ACO():
+class ACO:
+    """Ant Colony Optimization for Traveling Salesman Problem.
+
+    Implements ACO with neural heuristics and local search for TSP.
+    Supports multiple ACO variants and integrates with GFlowNet sampling.
+
+    Attributes:
+        problem_size: Number of nodes in TSP instance
+        distances: Distance matrix [n_nodes, n_nodes]
+        n_ants: Number of ants per iteration
+        decay: Pheromone evaporation rate
+        alpha: Pheromone influence parameter
+        beta: Heuristic influence parameter
+        device: Computation device ('cpu' or 'cuda')
+    """
+
     def __init__(
-        self, 
+        self,
         distances: torch.Tensor,
-        n_ants=20,
+        n_ants: int = 20,
         heuristic: torch.Tensor | None = None,
-        k_sparse=None,
+        k_sparse: int | None = None,
         pheromone: torch.Tensor | None = None,
-        decay=0.9,
-        alpha=1,
-        beta=1,
-        # AS variants
-        elitist=False,
-        maxmin=False,
-        rank_based=False,
-        n_elites=None,
-        smoothing=False,
-        smoothing_thres=5,
-        smoothing_delta=0.5,
-        shift_cost=True,
+        decay: float = 0.9,
+        alpha: float = 1.0,
+        beta: float = 1.0,
+        elitist: bool = False,
+        maxmin: bool = False,
+        rank_based: bool = False,
+        n_elites: int | None = None,
+        smoothing: bool = False,
+        smoothing_thres: int = 5,
+        smoothing_delta: float = 0.5,
+        shift_cost: bool = True,
         local_search_type: str | None = 'nls',
-        device='cpu',
-    ):
+        device: str = 'cpu',
+    ) -> None:
+        """Initialize ACO for TSP.
+
+        Args:
+            distances: Distance matrix of shape [n_nodes, n_nodes]
+            n_ants: Number of ants per iteration
+            heuristic: Heuristic matrix of shape [n_nodes, n_nodes]
+            k_sparse: Sparsity parameter for heuristic generation
+            pheromone: Initial pheromone matrix
+            decay: Pheromone evaporation rate (0.0-1.0)
+
+        Raises:
+            ValidationError: If input parameters are invalid
+        """
+        # Validate inputs
+        if HAS_VALIDATION:
+            try:
+                distances = validate_distance_matrix(distances)
+                n_ants = validate_positive_int(n_ants, "n_ants")
+
+                if decay <= 0 or decay > 1:
+                    raise ValidationError(f"decay must be in range (0, 1], got {decay}")
+                if alpha < 0:
+                    raise ValidationError(f"alpha must be non-negative, got {alpha}")
+                if beta < 0:
+                    raise ValidationError(f"beta must be non-negative, got {beta}")
+
+                if k_sparse is not None:
+                    k_sparse = validate_positive_int(k_sparse, "k_sparse")
+
+                if n_elites is not None:
+                    n_elites = validate_positive_int(n_elites, "n_elites")
+
+            except ValidationError as e:
+                raise ValidationError(f"ACO initialization failed: {e}") from e
         self.problem_size = len(distances)
         self.distances = distances.to(device)
         self.n_ants = n_ants
@@ -62,7 +139,8 @@ class ACO():
             self.pheromone = pheromone.to(device)
 
         if heuristic is None:
-            assert k_sparse is not None
+            if k_sparse is None:
+                k_sparse = len(distances) // 10  # Default to problem_size // 10
             self.heuristic = self.simple_heuristic(distances, k_sparse)
         else:
             self.heuristic = heuristic.to(device)
@@ -86,25 +164,48 @@ class ACO():
         heuristic = 1 / sparse_distances
         return heuristic
 
-    def sample(self, invtemp=1.0, inference=False, start_node=None):
+    @profile_aco
+    def sample(self, invtemp: float = 1.0, inference: bool = False, start_node: int | None = None) -> tuple[torch.Tensor, torch.Tensor | None, torch.Tensor]:
+        """Generate TSP tours using ACO with current pheromone and heuristic.
+
+        Args:
+            invtemp: Inverse temperature for sampling (higher = more greedy)
+            inference: Use greedy sampling instead of probabilistic
+            start_node: Fixed starting node index
+
+        Returns:
+            costs: Tour costs of shape [n_ants]
+            log_probs: Log probabilities of shape [n_ants, n_nodes-1] or None if inference
+            paths: Generated tours of shape [n_ants, n_nodes]
+        """
         if inference:
             probmat = (self.pheromone ** self.alpha) * (self.heuristic ** self.beta)
             paths = numba_sample(probmat.cpu().numpy(), self.n_ants, start_node=start_node)
             paths = torch.from_numpy(paths.T.astype(np.int64)).to(self.device)
-            # paths = self.gen_path(require_prob=False, start_node=start_node)
             log_probs = None
         else:
             paths, log_probs = self.gen_path(invtemp=invtemp, require_prob=True, start_node=start_node)
         costs = self.gen_path_costs(paths)
         return costs, log_probs, paths
 
-    def local_search(self, paths, inference=False):
+    @profile_aco
+    def local_search(self, paths: torch.Tensor, inference: bool = False) -> torch.Tensor:
+        """Apply local search improvements to TSP tours.
+
+        Args:
+            paths: Input tours of shape [batch_size, n_nodes]
+            inference: Run in inference mode
+
+        Returns:
+            improved_paths: Locally optimized tours of shape [batch_size, n_nodes]
+        """
         if self.local_search_type == "2opt":
             paths = self.two_opt(paths, inference)
         elif self.local_search_type == "nls":
             paths = self.nls(paths, inference)
         return paths
 
+    @profile_aco
     @torch.no_grad()
     def run(self, n_iterations, start_node=None):
         assert n_iterations > 0
@@ -142,6 +243,7 @@ class ACO():
         return self.lowest_cost, diversity, end - start
 
     @torch.no_grad()
+    @profile_aco
     def update_pheromone(self, paths, costs):
         '''
         Args:

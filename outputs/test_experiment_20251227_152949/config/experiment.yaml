@@ -1,0 +1,16 @@
+experiment_name: test_experiment
+problems:
+- !!python/object:gfacs.orchestrator.ProblemConfig
+  name: tsp_nls
+  size: 10
+  enabled: true
+  n_ants: 5
+  n_iterations: 5
+  device: cpu
+  extra_args: {}
+base_output_dir: outputs
+enable_visualizations: false
+enable_animations: false
+log_level: INFO
+max_parallel_problems: 1
+seed: 42

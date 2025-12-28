@@ -1,0 +1,8 @@
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/test_experiment_20251227_153315/logs/test_experiment
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - Problems to run: ['tsp_nls']
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - 🔄 Starting tsp_nls (size=10)
+2025-12-27 15:33:15 - test_experiment - [33mWARNING[0m - Could not load test dataset for tsp_nls: File ../data/tsp/testDataset-10.pt not found, please download the test dataset from the original repository.
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - ✅ Completed tsp_nls in 0.00s - Best cost: None
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - ✅ Experiment completed in 0.00s
+2025-12-27 15:33:15 - test_experiment - [32mINFO[0m - 📁 Results saved to: outputs/test_experiment_20251227_153315

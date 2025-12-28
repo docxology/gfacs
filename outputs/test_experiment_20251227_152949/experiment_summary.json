@@ -1,0 +1,24 @@
+{
+  "experiment_name": "test_experiment",
+  "start_time": 1766878189.673675,
+  "end_time": 1766878189.675277,
+  "duration": 0.0016019344329833984,
+  "problems_run": 1,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 10,
+      "start_time": 1766878189.674758,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 5,
+      "note": "No test data available",
+      "end_time": 1766878189.675206,
+      "duration": 0.00044798851013183594
+    }
+  },
+  "output_directory": "outputs/test_experiment_20251227_152949"
+}

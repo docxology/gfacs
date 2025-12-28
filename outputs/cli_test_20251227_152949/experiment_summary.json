@@ -1,0 +1,24 @@
+{
+  "experiment_name": "cli_test",
+  "start_time": 1766878189.1631858,
+  "end_time": 1766878189.541379,
+  "duration": 0.3781931400299072,
+  "problems_run": 1,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766878189.166133,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766878189.166645,
+      "duration": 0.0005121231079101562
+    }
+  },
+  "output_directory": "outputs/cli_test_20251227_152949"
+}

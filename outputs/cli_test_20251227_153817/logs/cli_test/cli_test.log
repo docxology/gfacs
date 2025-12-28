@@ -1,0 +1,14 @@
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - 📝 Experiment logging setup complete in outputs/cli_test_20251227_153817/logs/cli_test
+2025-12-27 15:38:17 - cli_test - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - Problems to run: ['tsp_nls']
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - 🔄 Starting tsp_nls (size=50)
+2025-12-27 15:38:17 - cli_test - [33mWARNING[0m - Could not load test dataset for tsp_nls: File ../data/tsp/testDataset-50.pt not found, please download the test dataset from the original repository.
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - ✅ Completed tsp_nls in 0.00s - Best cost: None
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - ✅ Runtime comparison plot generated
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - ✅ Experiment report generated
+2025-12-27 15:38:17 - cli_test - [33mWARNING[0m - Failed to generate summary statistics: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+2025-12-27 15:38:17 - cli_test - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - ✅ Experiment completed in 0.20s
+2025-12-27 15:38:17 - cli_test - [32mINFO[0m - 📁 Results saved to: outputs/cli_test_20251227_153817

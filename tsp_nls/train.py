@@ -1,7 +1,9 @@
+import logging
 import math
 import os
 import random
 import time
+from pathlib import Path
 
 from tqdm import tqdm
 import numpy as np
@@ -12,6 +14,18 @@ from aco import ACO, ACO_NP
 from utils import gen_pyg_data, load_val_dataset
 
 import wandb
+
+# Import GFACS logging utilities
+try:
+    from gfacs.utils.logging import get_logger, setup_experiment_logging
+    HAS_GFACS_LOGGING = True
+except ImportError:
+    HAS_GFACS_LOGGING = False
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    logger = logging.getLogger(__name__)
 
 
 EPS = 1e-10
@@ -30,8 +44,13 @@ def train_instance(
         shared_energy_norm=False,
         beta=100.0,
         it=0,
+        logger=None,
     ):
     model.train()
+
+    if logger:
+        logger.info(f"Starting training instance with {len(data)} samples, {n_ants} ants, "
+                   f"guided_exploration={guided_exploration}, beta={beta}")
 
     ##################################################
     # wandb
@@ -185,7 +204,7 @@ def train_epoch(
     for i in tqdm(range(steps_per_epoch), desc="Train", dynamic_ncols=True):
         it = (epoch - 1) * steps_per_epoch + i
         data = generate_traindata(batch_size, n_node, k_sparse)
-        train_instance(net, optimizer, data, n_ants, cost_w, invtemp, guided_exploration, shared_energy_norm, beta, it)
+        train_instance(net, optimizer, data, n_ants, cost_w, invtemp, guided_exploration, shared_energy_norm, beta, it, logger)
 
 
 @torch.no_grad()
@@ -196,7 +215,7 @@ def validation(val_list, n_ants, net, epoch, steps_per_epoch):
     avg_stats = [i.item() for i in np.stack(stats).mean(0)]
 
     ##################################################
-    print(f"epoch {epoch}:", avg_stats)
+    logger.info(f"Epoch {epoch}: {avg_stats}")
     # wandb
     if USE_WANDB:
         wandb.log(
@@ -235,6 +254,7 @@ def train(
         guided_exploration=False,
         shared_energy_norm=False,
         beta_schedule_params=(50, 500, 5),  # (beta_min, beta_max, beta_flat_epochs)
+        logger=None,
     ):
     savepath = os.path.join(savepath, str(n_nodes), run_name)
     os.makedirs(savepath, exist_ok=True)
@@ -352,6 +372,19 @@ if __name__ == "__main__":
     DEVICE = args.device if torch.cuda.is_available() else "cpu"
     USE_WANDB = not args.disable_wandb
 
+    # Setup logging
+    if HAS_GFACS_LOGGING:
+        logger = setup_experiment_logging(f"tsp_nls_train_{args.nodes}", log_dir="../logs")
+    else:
+        logger = logging.getLogger(__name__)
+
+    logger.info("Starting TSP-NLS training")
+    logger.info(f"Problem size: {args.nodes} nodes")
+    logger.info(f"Device: {DEVICE}")
+    logger.info(f"Batch size: {args.batch_size}")
+    logger.info(f"Learning rate: {args.lr}")
+    logger.info(f"Training for {args.epochs} epochs with {args.steps} steps per epoch")
+
     # seed everything
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed(args.seed)
@@ -392,4 +425,5 @@ if __name__ == "__main__":
         guided_exploration=(not args.disable_guided_exp),
         shared_energy_norm=(not args.disable_shared_energy_norm),
         beta_schedule_params=(args.beta_min, args.beta_max, args.beta_flat_epochs),
+        logger=logger,
     )

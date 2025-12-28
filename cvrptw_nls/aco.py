@@ -6,7 +6,10 @@ import numpy as np
 import torch
 from torch.distributions import Categorical
 
-from pyvrp_local_search import pyvrp_batched_local_search
+try:
+    from .pyvrp_local_search import pyvrp_batched_local_search
+except ImportError:
+    from pyvrp_local_search import pyvrp_batched_local_search
 
 
 CAPACITY = 1.0 # The input demands shall be normalized

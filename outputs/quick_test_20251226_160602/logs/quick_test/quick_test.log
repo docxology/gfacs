@@ -1,0 +1,14 @@
+2025-12-26 16:06:02 - quick_test - [32mINFO[0m - 📝 Experiment logging setup complete in /Users/4d/Documents/GitHub/gfacs/outputs/quick_test_20251226_160602/logs/quick_test
+2025-12-26 16:06:02 - quick_test - [33mWARNING[0m - Animations requested but dependencies not available
+2025-12-26 16:06:02 - quick_test - [32mINFO[0m - 🚀 Starting GFACS comprehensive experiment
+2025-12-26 16:06:02 - quick_test - [32mINFO[0m - Problems to run: ['tsp_nls']
+2025-12-26 16:06:02 - quick_test - [32mINFO[0m - 🔄 Starting tsp_nls (size=50)
+2025-12-26 16:06:05 - quick_test - [33mWARNING[0m - Could not load test dataset for tsp_nls: load_test_dataset() got an unexpected keyword argument 'size'
+2025-12-26 16:06:05 - quick_test - [32mINFO[0m - ✅ Completed tsp_nls in 3.66s - Best cost: None
+2025-12-26 16:06:05 - quick_test - [32mINFO[0m - 📊 Generating comprehensive visualizations...
+2025-12-26 16:06:05 - quick_test - [33mWARNING[0m - Failed to generate runtime plot: name 'plt' is not defined
+2025-12-26 16:06:05 - quick_test - [33mWARNING[0m - Failed to generate experiment report: name 'plt' is not defined
+2025-12-26 16:06:05 - quick_test - [33mWARNING[0m - Failed to generate summary statistics: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+2025-12-26 16:06:05 - quick_test - [33mWARNING[0m - Skipping animations - dependencies not available
+2025-12-26 16:06:05 - quick_test - [32mINFO[0m - ✅ Experiment completed in 3.86s
+2025-12-26 16:06:05 - quick_test - [32mINFO[0m - 📁 Results saved to: /Users/4d/Documents/GitHub/gfacs/outputs/quick_test_20251226_160602

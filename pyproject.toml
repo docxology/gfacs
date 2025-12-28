@@ -1,0 +1,177 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gfacs"
+version = "0.1.0"
+description = "Ant Colony Sampling with GFlowNets for Combinatorial Optimization"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Minsu Kim", email = "minsu.kim@umontreal.ca"},
+    {name = "Sanghyeok Choi"},
+    {name = "Jiwoo Son"},
+    {name = "Hyeonah Kim"},
+    {name = "Jinkyoo Park"},
+    {name = "Yoshua Bengio"}
+]
+keywords = [
+    "combinatorial-optimization",
+    "gflownet",
+    "ant-colony-optimization",
+    "neural-networks",
+    "reinforcement-learning"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.23.5",
+    "numba>=0.58.1",
+    "pandas>=2.0.3",
+    "scipy>=1.10.1",
+    "tqdm>=4.66.1",
+    "wandb>=0.16.1",
+    "pyvrp>=0.8.2",
+    "torch>=2.9.1",
+    "torch-geometric>=2.7.0",
+    "torchvision>=0.24.1",
+    "torchaudio>=2.9.1",
+    "hatchling>=1.28.0",
+]
+
+[project.optional-dependencies]
+# Core PyTorch dependencies (CUDA version varies by system)
+torch = [
+    "torch>=2.1.1",
+    "torch-geometric>=2.4.0",
+]
+# External solvers (optional installation)
+solvers = [
+    # These require separate compilation/installation
+    # HGS-CVRP (C++): requires CMake, C++ compiler
+    # Concorde (C): requires C compiler, QSopt
+]
+# Development dependencies
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+    "psutil>=5.9.0",
+]
+# All dependencies
+all = [
+    "gfacs[torch,solvers,dev]",
+]
+
+[project.scripts]
+# CLI entry points for training
+gfacs-train-tsp = "gfacs.tsp_nls.train:main"
+gfacs-train-cvrp = "gfacs.cvrp_nls.train:main"
+gfacs-train-cvrptw = "gfacs.cvrptw_nls.train:main"
+gfacs-train-bpp = "gfacs.bpp.train:main"
+gfacs-train-op = "gfacs.op.train:main"
+gfacs-train-pctsp = "gfacs.pctsp.train:main"
+gfacs-train-smtwtp = "gfacs.smtwtp.train:main"
+gfacs-train-sop = "gfacs.sop.train:main"
+
+# CLI entry points for testing
+gfacs-test-tsp = "gfacs.tsp_nls.test:main"
+gfacs-test-cvrp = "gfacs.cvrp_nls.test:main"
+gfacs-test-cvrptw = "gfacs.cvrptw_nls.test:main"
+gfacs-test-bpp = "gfacs.bpp.test:main"
+gfacs-test-op = "gfacs.op.test:main"
+gfacs-test-pctsp = "gfacs.pctsp.test:main"
+gfacs-test-smtwtp = "gfacs.smtwtp.test:main"
+gfacs-test-sop = "gfacs.sop.test:main"
+
+# Utility scripts
+gfacs-verify = "gfacs.verify_install:main"
+gfacs-orchestrator = "gfacs.orchestrator:main"
+
+[project.urls]
+Homepage = "https://github.com/minsu-kim/gfacs"
+Repository = "https://github.com/minsu-kim/gfacs"
+Issues = "https://github.com/minsu-kim/gfacs/issues"
+Documentation = "https://github.com/minsu-kim/gfacs#readme"
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "torch.*",
+    "torch_geometric.*",
+    "wandb.*",
+    "pyvrp.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --cov=gfacs --cov-report=html --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+filterwarnings = [
+    "ignore::DeprecationWarning:torch_geometric.distributed",
+]
+
+[tool.coverage.run]
+source = ["gfacs"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+]

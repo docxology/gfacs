@@ -2,9 +2,17 @@ import os
 import pickle
 
 import torch
-from torch_geometric.data import Data
+
+# Optional torch_geometric import
+try:
+    from torch_geometric.data import Data
+    HAS_TORCH_GEOMETRIC = True
+except ImportError:
+    Data = None
+    HAS_TORCH_GEOMETRIC = False
 
 
+@torch.no_grad()
 def gen_distance_matrix(tsp_coordinates):
     '''
     Args:
@@ -13,8 +21,15 @@ def gen_distance_matrix(tsp_coordinates):
         distance_matrix: torch tensor [n_nodes, n_nodes] for EUC distances
     '''
     n_nodes = len(tsp_coordinates)
-    distances = torch.norm(tsp_coordinates[:, None] - tsp_coordinates, dim=2, p=2)
-    distances[torch.arange(n_nodes), torch.arange(n_nodes)] = 1e9 # note here
+
+    # Vectorized Euclidean distance computation
+    # More memory efficient than norm for large matrices
+    diff = tsp_coordinates.unsqueeze(0) - tsp_coordinates.unsqueeze(1)  # [n_nodes, n_nodes, 2]
+    distances = torch.sqrt((diff ** 2).sum(dim=-1))  # [n_nodes, n_nodes]
+
+    # Set diagonal to large value to prevent self-loops
+    distances.fill_diagonal_(1e9)
+
     return distances
 
 
@@ -28,6 +43,8 @@ def gen_pyg_data(tsp_coordinates, k_sparse, start_node=None):
         pyg_data: pyg Data instance
         distances: distance matrix
     '''
+    if not HAS_TORCH_GEOMETRIC:
+        raise ImportError("torch_geometric not available")
     n_nodes = len(tsp_coordinates)
     distances = gen_distance_matrix(tsp_coordinates)
     topk_values, topk_indices = torch.topk(distances, 
@@ -59,6 +76,8 @@ def gen_pyg_data_tsplib(tsp_coordinates, k_sparse, start_node=None):
         pyg_data: pyg Data instance
         distances: distance matrix
     '''
+    if not HAS_TORCH_GEOMETRIC:
+        raise ImportError("torch_geometric not available")
     n_nodes = len(tsp_coordinates)
     distances = gen_distance_matrix(tsp_coordinates)
     topk_values, topk_indices = torch.topk(distances, k=k_sparse, dim=1, largest=False)

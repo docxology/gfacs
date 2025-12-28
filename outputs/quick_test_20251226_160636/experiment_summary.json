@@ -1,0 +1,24 @@
+{
+  "experiment_name": "quick_test",
+  "start_time": 1766793996.021229,
+  "end_time": 1766793998.583172,
+  "duration": 2.5619430541992188,
+  "problems_run": 1,
+  "problems_succeeded": 1,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766793996.023044,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766793998.1834712,
+      "duration": 2.1604270935058594
+    }
+  },
+  "output_directory": "/Users/4d/Documents/GitHub/gfacs/outputs/quick_test_20251226_160636"
+}

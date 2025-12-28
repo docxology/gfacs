@@ -1,0 +1,20 @@
+{
+  "experiment_name": "quick_test",
+  "start_time": 1766792894.6356611,
+  "end_time": 1766792894.958566,
+  "duration": 0.3229048252105713,
+  "problems_run": 1,
+  "problems_succeeded": 0,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "failed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766792894.637917,
+      "error": "unterminated triple-quoted string literal (detected at line 718) (aco.py, line 436)",
+      "end_time": 1766792894.639727,
+      "duration": 0.0018100738525390625
+    }
+  },
+  "output_directory": "outputs/quick_test_20251226_154814"
+}

@@ -1,0 +1,10 @@
+{
+  "experiment_name": "gfacs_experiment",
+  "start_time": 1766878189.6396632,
+  "end_time": 1766878189.642533,
+  "duration": 0.002869844436645508,
+  "problems_run": 0,
+  "problems_succeeded": 0,
+  "problem_results": {},
+  "output_directory": "outputs/gfacs_experiment_20251227_152949"
+}

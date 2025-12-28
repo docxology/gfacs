@@ -1,0 +1,20 @@
+{
+  "experiment_name": "quick_test",
+  "start_time": 1766793849.7305999,
+  "end_time": 1766793856.683419,
+  "duration": 6.952819108963013,
+  "problems_run": 1,
+  "problems_succeeded": 0,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "failed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766793849.73414,
+      "error": "No module named 'net'",
+      "end_time": 1766793856.252009,
+      "duration": 6.517868995666504
+    }
+  },
+  "output_directory": "/Users/4d/Documents/GitHub/gfacs/outputs/quick_test_20251226_160409"
+}

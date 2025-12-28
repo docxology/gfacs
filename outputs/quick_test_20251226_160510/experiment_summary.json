@@ -1,0 +1,20 @@
+{
+  "experiment_name": "quick_test",
+  "start_time": 1766793910.295369,
+  "end_time": 1766793913.5463848,
+  "duration": 3.2510159015655518,
+  "problems_run": 1,
+  "problems_succeeded": 0,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "failed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766793910.298056,
+      "error": "No module named 'aco'",
+      "end_time": 1766793913.4498298,
+      "duration": 3.1517739295959473
+    }
+  },
+  "output_directory": "/Users/4d/Documents/GitHub/gfacs/outputs/quick_test_20251226_160510"
+}

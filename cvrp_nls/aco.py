@@ -6,7 +6,10 @@ from itertools import combinations
 import torch
 from torch.distributions import Categorical
 
-from swapstar import swapstar
+try:
+    from .swapstar import swapstar
+except ImportError:
+    from swapstar import swapstar
 
 
 CAPACITY = 1.0 # The input demands shall be normalized

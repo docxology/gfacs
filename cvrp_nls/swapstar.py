@@ -43,17 +43,28 @@ def read_routes(filepath):
 
 
 def get_lib_filename():
-    path = "HGS-CVRP-main/build/libhgscvrp.so"
-    if os.path.isfile(path):
-        return path
-    else:
-        raise FileNotFoundError(f"Shared library file `{path}` not found")
+    # Check for library file with different extensions (platform-specific)
+    extensions = ['.so', '.dylib', '.dll']
+    basedir = os.path.dirname(os.path.realpath(__file__))
+    base_path = os.path.join(basedir, "HGS-CVRP-main", "build", "libhgscvrp")
+
+    for ext in extensions:
+        path = base_path + ext
+        if os.path.isfile(path):
+            return path  # Return full path
+
+    # If no library found, raise error with helpful message
+    raise FileNotFoundError(
+        f"Shared library file `libhgscvrp` not found in {os.path.join(basedir, 'HGS-CVRP-main', 'build')}/ "
+        f"(tried extensions: {', '.join(extensions)}). "
+        f"Please run 'bash scripts/setup_solvers.sh' to build HGS-CVRP."
+    )
 
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.path.dirname(os.path.realpath(__file__))
 # os.add_dll_directory(basedir)
-HGS_LIBRARY_FILEPATH = os.path.join(basedir, get_lib_filename())
+HGS_LIBRARY_FILEPATH = get_lib_filename()  # get_lib_filename() now returns full path
 
 c_double_p = POINTER(c_double)
 c_int_p = POINTER(c_int)

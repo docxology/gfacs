@@ -1,0 +1,37 @@
+{
+  "experiment_name": "custom_problems",
+  "start_time": 1766793972.093913,
+  "end_time": 1766793975.3727272,
+  "duration": 3.2788140773773193,
+  "problems_run": 2,
+  "problems_succeeded": 2,
+  "problem_results": {
+    "tsp_nls": {
+      "status": "completed",
+      "problem": "tsp_nls",
+      "size": 50,
+      "start_time": 1766793972.095714,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766793975.13647,
+      "duration": 3.0407559871673584
+    },
+    "bpp": {
+      "status": "completed",
+      "problem": "bpp",
+      "size": 120,
+      "start_time": 1766793975.136526,
+      "best_cost": null,
+      "mean_cost": null,
+      "iterations": 0,
+      "n_ants": 20,
+      "note": "No test data available",
+      "end_time": 1766793975.140308,
+      "duration": 0.0037817955017089844
+    }
+  },
+  "output_directory": "/Users/4d/Documents/GitHub/gfacs/outputs/custom_problems_20251226_160612"
+}
